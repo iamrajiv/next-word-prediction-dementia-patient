@@ -1,10 +1,10 @@
 <div align="center">
-<img src="assets/next-word-prediction-dementia-patient.svg" height="auto" width="400" />
+<img src="assets/next-word-prediction-dementia-patient.svg" height="auto" width="200" />
 <br />
 <h1>Next Word Prediction Dementia Patient</h1>
-<h3>
+<p>
 Next Word Prediction Dementia Patient is a web application that predicts the next word of a sentence based on the previous word and the context of the sentence.
-</h3>
+</p>
 </div>
 
 ## About
