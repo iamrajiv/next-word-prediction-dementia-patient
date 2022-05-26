@@ -1,5 +1,5 @@
 <div align="center">
-<img src="assets/next-word-prediction-dementia-patient.svg" height="auto" width="200" />
+<img src="assets/next-word-prediction-dementia-patient.svg" height="auto" width="400" />
 <br />
 <h1>Next Word Prediction Dementia Patient</h1>
 <p>
