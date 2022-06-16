@@ -40,8 +40,8 @@ jQuery(document).ready(function() {
             }).fail(function(jsondata, textStatus, jqXHR) {
                 console.log(jsondata)
             });
-        }
-    })
+    }
+})
 
     $('#btn-process').on('click', function() {
         $.ajax({
