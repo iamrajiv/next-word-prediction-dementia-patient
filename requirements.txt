@@ -3,3 +3,5 @@ transformers
 Flask
 numpy
 sentencepiece
+SpeechRecognition
+pydub

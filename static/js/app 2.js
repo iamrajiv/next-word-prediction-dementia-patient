@@ -1,18 +1,18 @@
 var data = []
 var token = ""
 
-jQuery(document).ready(function() {
+jQuery(document).ready(function () {
     var slider = $('#max_words')
-    slider.on('change mousemove', function(evt) {
+    slider.on('change mousemove', function (evt) {
         $('#label_max_words').text('Top k words: ' + slider.val())
     })
 
     var slider_mask = $('#max_words_mask')
-    slider_mask.on('change mousemove', function(evt) {
+    slider_mask.on('change mousemove', function (evt) {
         $('#label_max_words').text('Top k words: ' + slider_mask.val())
     })
 
-    $('#input_text').on('keyup', function(e) {
+    $('#input_text').on('keyup', function (e) {
         if (e.key == ' ') {
             $.ajax({
                 url: '/get_end_predictions',
@@ -23,13 +23,13 @@ jQuery(document).ready(function() {
                     "input_text": $('#input_text').val(),
                     "top_k": slider.val(),
                 }),
-                beforeSend: function() {
+                beforeSend: function () {
                     $('.overlay').show()
                 },
-                complete: function() {
+                complete: function () {
                     $('.overlay').hide()
                 }
-            }).done(function(jsondata, textStatus, jqXHR) {
+            }).done(function (jsondata, textStatus, jqXHR) {
                 console.log(jsondata)
                 $('#text_bert').val(jsondata['bert'])
                 $('#text_xlnet').val(jsondata['xlnet'])
@@ -37,13 +37,13 @@ jQuery(document).ready(function() {
                 $('#text_bart').val(jsondata['bart'])
                 $('#text_electra').val(jsondata['electra'])
                 $('#text_roberta').val(jsondata['roberta'])
-            }).fail(function(jsondata, textStatus, jqXHR) {
+            }).fail(function (jsondata, textStatus, jqXHR) {
                 console.log(jsondata)
             });
         }
     })
 
-    $('#btn-process').on('click', function() {
+    $('#btn-process').on('click', function () {
         $.ajax({
             url: '/get_mask_predictions',
             type: "post",
@@ -53,13 +53,13 @@ jQuery(document).ready(function() {
                 "input_text": $('#mask_input_text').val(),
                 "top_k": slider_mask.val(),
             }),
-            beforeSend: function() {
+            beforeSend: function () {
                 $('.overlay').show()
             },
-            complete: function() {
+            complete: function () {
                 $('.overlay').hide()
             }
-        }).done(function(jsondata, textStatus, jqXHR) {
+        }).done(function (jsondata, textStatus, jqXHR) {
             console.log(jsondata)
             $('#mask_text_bert').val(jsondata['bert'])
             $('#mask_text_xlnet').val(jsondata['xlnet'])
@@ -67,7 +67,7 @@ jQuery(document).ready(function() {
             $('#mask_text_bart').val(jsondata['bart'])
             $('#mask_text_electra').val(jsondata['electra'])
             $('#mask_text_roberta').val(jsondata['roberta'])
-        }).fail(function(jsondata, textStatus, jqXHR) {
+        }).fail(function (jsondata, textStatus, jqXHR) {
             console.log(jsondata)
         });
     })

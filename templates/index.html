@@ -1,209 +1,215 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta charset="utf-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <link href="../static/css/bootstrap.min.css" rel="stylesheet" />
-      <link href="../static/css/app.css" rel="stylesheet" />
-      <link href="../static/css/bootstrap-suggest.css" rel="stylesheet" />
-      <script src="../static/js/jquery-3.4.1.min.js"></script>
-      <script src="../static/js/bootstrap.min.js"></script>
-      <script src="../static/js/bootstrap-suggest.js"></script>
-      <script src="../static/js/app.js"></script>
-      <link
-         href="https://fonts.googleapis.com/css?family=Josefin+Sans:300|Open+Sans:300|Oxygen|Material+Icons"
-         rel="stylesheet"
-         />
-   </head>
-   <body>
-      <div class="overlay">
-         <div class="spinner-border text-primary" role="status">
-            <span class="sr-only">Loading...</span>
-         </div>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../static/css/app.css" rel="stylesheet" />
+    <link href="../static/css/bootstrap-suggest.css" rel="stylesheet" />
+    <script src="../static/js/jquery-3.4.1.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="../static/js/bootstrap-suggest.js"></script>
+    <script src="../static/js/app.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=Josefin+Sans:300|Open+Sans:300|Oxygen|Material+Icons"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="overlay">
+      <div class="spinner-border text-primary" role="status">
+        <span class="sr-only">Loading...</span>
       </div>
-      <h2>Next Word Prediction Dementia Patient</h2>
-      <div class="row">
-         <div class="col-sm-1"></div>
-         <div class="col-sm-10">
+    </div>
+    <h2>Next Word Prediction Dementia Patient</h2>
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-10">
+        <br />
+        <center>
+          <h2>Predict next bag of words</h2>
+        </center>
+        <div class="form-row">
+          <div class="form-group col-md-8">
             <br />
-            <center>
-               <h2>Predict next bag of words</h2>
-            </center>
-            <div class="form-row">
-               <div class="form-group col-md-8">
-                  <br />
-                  <h4>Type a word and press space to get suggestions</h4>
-               </div>
-               <div class="form-group col-md-4">
-                  <br />
-                  <label for="max_words" id="label_max_words">Top k words: 5</label>
-                  <input
-                     type="range"
-                     class="custom-range"
-                     min="1"
-                     max="10"
-                     value="5"
-                     step="1"
-                     id="max_words"
-                     />
-               </div>
-            </div>
-            <div class="form-row">
-               <textarea
-                  class="form-control txt_input"
-                  id="input_text"
-                  rows="1"
-                  ></textarea>
-            </div>
-            <h4>Predictions</h4>
-            <div class="form-row">
-               <div class="form-group col-md-2">
-                  <label for="text_paragraphs">BERT</label>
-                  <textarea
-                     class="form-control txt_response"
-                     id="text_bert"
-                     readonly
-                     ></textarea>
-               </div>
-               <div class="form-group col-md-2">
-                  <label for="text_paragraphs">XLNET</label>
-                  <textarea
-                     class="form-control txt_response"
-                     id="text_xlnet"
-                     readonly
-                     ></textarea>
-               </div>
-               <div class="form-group col-md-2">
-                  <label for="text_paragraphs">XLM-Roberta</label>
-                  <textarea
-                     class="form-control txt_response"
-                     id="text_xlm"
-                     readonly
-                     ></textarea>
-               </div>
-               <div class="form-group col-md-2">
-                  <label for="text_paragraphs">BART</label>
-                  <textarea
-                     class="form-control txt_response"
-                     id="text_bart"
-                     readonly
-                     ></textarea>
-               </div>
-               <div class="form-group col-md-2">
-                  <label for="text_paragraphs">ELECTRA</label>
-                  <textarea
-                     class="form-control txt_response"
-                     id="text_electra"
-                     readonly
-                     ></textarea>
-               </div>
-               <div class="form-group col-md-2">
-                  <label for="text_paragraphs">ROBERTA</label>
-                  <textarea
-                     class="form-control txt_response"
-                     id="text_roberta"
-                     readonly
-                     ></textarea>
-               </div>
-            </div>
+            <h4>Type a word and press space to get suggestions</h4>
+          </div>
+          <div>
+            <h4>Give input through audio file</h4>
+            <form action="/" method="post" enctype="multipart/form-data">
+              <input type="file" name="file" /><br /><br />
+              <input type="submit" value="Upload" />
+            </form>
+          </div>
+          <br />
+          <div class="form-group col-md-4">
             <br />
-            <center>
-               <h2>Predict missing word in a sentence which has been masked</h2>
-            </center>
-            <div class="form-row">
-               <div class="form-group col-md-8">
-                  <br />
-                  <h4>
-                     Type a sentence, include &lt;mask&gt; to predict the word and hit
-                     Predict button
-                  </h4>
-               </div>
-               <div class="form-group col-md-2">
-                  <br />
-                  <label for="max_words" id="label_max_words">Top k words: 5</label>
-                  <input
-                     type="range"
-                     class="custom-range"
-                     min="1"
-                     max="10"
-                     value="5"
-                     step="1"
-                     id="max_words_mask"
-                     />
-               </div>
-               <div class="form-group col-md-2">
-                  <label></label>
-                  <button
-                     type="button"
-                     class="btn btn-primary btn-lg btn-block"
-                     id="btn-process"
-                     >
-                  Predict
-                  </button>
-               </div>
-            </div>
-            <div class="form-row">
-               <textarea
-                  class="form-control txt_input"
-                  id="mask_input_text"
-                  rows="1"
-                  ></textarea>
-            </div>
-            <h4>Predictions</h4>
-            <div class="form-row">
-               <div class="form-group col-md-2">
-                  <label for="text_paragraphs">BERT</label>
-                  <textarea
-                     class="form-control txt_response"
-                     id="mask_text_bert"
-                     readonly
-                     rows="1"
-                     ></textarea>
-               </div>
-               <div class="form-group col-md-2">
-                  <label for="text_paragraphs">XLNET</label>
-                  <textarea
-                     class="form-control txt_response"
-                     id="mask_text_xlnet"
-                     readonly
-                     ></textarea>
-               </div>
-               <div class="form-group col-md-2">
-                  <label for="text_paragraphs">XLM-Roberta</label>
-                  <textarea
-                     class="form-control txt_response"
-                     id="mask_text_xlm"
-                     readonly
-                     ></textarea>
-               </div>
-               <div class="form-group col-md-2">
-                  <label for="text_paragraphs">BART</label>
-                  <textarea
-                     class="form-control txt_response"
-                     id="mask_text_bart"
-                     readonly
-                     ></textarea>
-               </div>
-               <div class="form-group col-md-2">
-                  <label for="text_paragraphs">ELECTRA</label>
-                  <textarea
-                     class="form-control txt_response"
-                     id="mask_text_electra"
-                     readonly
-                     ></textarea>
-               </div>
-               <div class="form-group col-md-2">
-                  <label for="text_paragraphs">ROBERTA</label>
-                  <textarea
-                     class="form-control txt_response"
-                     id="mask_text_roberta"
-                     readonly
-                     ></textarea>
-               </div>
-            </div>
-         </div>
-         <div class="col-sm-1"></div>
+            <label for="max_words" id="label_max_words">Top k words: 5</label>
+            <input
+              type="range"
+              class="custom-range"
+              min="1"
+              max="10"
+              value="5"
+              step="1"
+              id="max_words"
+            />
+          </div>
+        </div>
+        <div class="form-row">
+          <textarea class="form-control txt_input" id="input_text" rows="1">
+{{ text }}</textarea
+          >
+        </div>
+        <h4>Predictions</h4>
+        <div class="form-row">
+          <div class="form-group col-md-2">
+            <label for="text_paragraphs">BERT</label>
+            <textarea
+              class="form-control txt_response"
+              id="text_bert"
+              readonly
+            ></textarea>
+          </div>
+          <div class="form-group col-md-2">
+            <label for="text_paragraphs">XLNET</label>
+            <textarea
+              class="form-control txt_response"
+              id="text_xlnet"
+              readonly
+            ></textarea>
+          </div>
+          <div class="form-group col-md-2">
+            <label for="text_paragraphs">XLM-Roberta</label>
+            <textarea
+              class="form-control txt_response"
+              id="text_xlm"
+              readonly
+            ></textarea>
+          </div>
+          <div class="form-group col-md-2">
+            <label for="text_paragraphs">BART</label>
+            <textarea
+              class="form-control txt_response"
+              id="text_bart"
+              readonly
+            ></textarea>
+          </div>
+          <div class="form-group col-md-2">
+            <label for="text_paragraphs">ELECTRA</label>
+            <textarea
+              class="form-control txt_response"
+              id="text_electra"
+              readonly
+            ></textarea>
+          </div>
+          <div class="form-group col-md-2">
+            <label for="text_paragraphs">ROBERTA</label>
+            <textarea
+              class="form-control txt_response"
+              id="text_roberta"
+              readonly
+            ></textarea>
+          </div>
+        </div>
+        <br />
+        <center>
+          <h2>Predict missing word in a sentence which has been masked</h2>
+        </center>
+        <div class="form-row">
+          <div class="form-group col-md-8">
+            <br />
+            <h4>
+              Type a sentence, include &lt;mask&gt; to predict the word and hit
+              Predict button
+            </h4>
+          </div>
+          <div class="form-group col-md-2">
+            <br />
+            <label for="max_words" id="label_max_words">Top k words: 5</label>
+            <input
+              type="range"
+              class="custom-range"
+              min="1"
+              max="10"
+              value="5"
+              step="1"
+              id="max_words_mask"
+            />
+          </div>
+          <div class="form-group col-md-2">
+            <label></label>
+            <button
+              type="button"
+              class="btn btn-primary btn-lg btn-block"
+              id="btn-process"
+            >
+              Predict
+            </button>
+          </div>
+        </div>
+        <div class="form-row">
+          <textarea
+            class="form-control txt_input"
+            id="mask_input_text"
+            rows="1"
+          ></textarea>
+        </div>
+        <h4>Predictions</h4>
+        <div class="form-row">
+          <div class="form-group col-md-2">
+            <label for="text_paragraphs">BERT</label>
+            <textarea
+              class="form-control txt_response"
+              id="mask_text_bert"
+              readonly
+              rows="1"
+            ></textarea>
+          </div>
+          <div class="form-group col-md-2">
+            <label for="text_paragraphs">XLNET</label>
+            <textarea
+              class="form-control txt_response"
+              id="mask_text_xlnet"
+              readonly
+            ></textarea>
+          </div>
+          <div class="form-group col-md-2">
+            <label for="text_paragraphs">XLM-Roberta</label>
+            <textarea
+              class="form-control txt_response"
+              id="mask_text_xlm"
+              readonly
+            ></textarea>
+          </div>
+          <div class="form-group col-md-2">
+            <label for="text_paragraphs">BART</label>
+            <textarea
+              class="form-control txt_response"
+              id="mask_text_bart"
+              readonly
+            ></textarea>
+          </div>
+          <div class="form-group col-md-2">
+            <label for="text_paragraphs">ELECTRA</label>
+            <textarea
+              class="form-control txt_response"
+              id="mask_text_electra"
+              readonly
+            ></textarea>
+          </div>
+          <div class="form-group col-md-2">
+            <label for="text_paragraphs">ROBERTA</label>
+            <textarea
+              class="form-control txt_response"
+              id="mask_text_roberta"
+              readonly
+            ></textarea>
+          </div>
+        </div>
       </div>
-      <br />
-   </body>
+      <div class="col-sm-1"></div>
+    </div>
+    <br />
+  </body>
 </html>

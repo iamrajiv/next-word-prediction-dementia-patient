@@ -2,13 +2,34 @@ import flask
 from flask import Flask, request, render_template
 import json
 import main
-
+import speech_recognition as sr
+r = sr.Recognizer()
 app = Flask(__name__)
 
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    if request.method == 'GET':
+        return render_template('index.html')
+
+
+@app.route('/', methods=['POST'])
+def get_audio():
+    # get the file
+    file = request.files['file']
+    # save the file
+    filename = file.filename
+    file.save(filename)
+    print(filename)
+    # return a response
+    with sr.AudioFile(filename) as source:
+        # listen for the data (load audio to memory)
+        audio_data = r.record(source)
+        # recognize (convert from speech to text)
+        text = r.recognize_google(audio_data)
+        print(text)
+        text = text + " "
+        return render_template('index.html', text=text)
 
 
 @app.route('/get_end_predictions', methods=['post'])
